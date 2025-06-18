@@ -1,0 +1,103 @@
+description: TDS Virtual TA Project Sample (but not the actual evaluation) Questions
+
+prompts:
+  - "{{ question }}"
+
+providers:
+  - id: http
+    config:
+      url: http://localhost:8000/query
+      method: POST
+      headers:
+        content-type: application/json
+        Authorization: Bearer {{ env.AIPROXY_TOKEN }}
+      body:
+        question: "{{ question }}"
+        image: "{{ image if image else null }}"
+
+# Ensure JSON schema
+defaultTest:
+  assert:
+    - type: is-json
+      value:
+        type: object
+        required: [answer, links]
+        properties:
+          answer: { type: string }
+          links:
+            type: array
+            items:
+              type: object
+              required: [url, text]
+              properties:
+                url: { type: string }
+                text: { type: string }
+
+tests:
+  - vars:
+      question: >-
+        The question asks to use gpt-3.5-turbo-0125 model but the ai-proxy
+        provided by Anand sir only supports gpt-4o-mini. So should we just use
+        gpt-4o-mini or use the OpenAI API for gpt3.5 turbo?
+    assert: []
+  - vars:
+      question: >-
+        If a student scores 10/10 on GA4 as well as a bonus, how would it appear
+        on the dashboard?
+    assert: []
+  - vars:
+      question: >-
+        I know Docker but have not used Podman before. Should I use Docker for
+        this course?
+    assert: []
+  - vars:
+      question: >-
+        Will there be partial marks for incorrect JSON responses in GA4?
+    assert: []
+  - vars:
+      question: When is the TDS Sep 2025 end-term exam?
+    assert: []
+  - vars:
+      question: >-
+        How do I access the Podman container logs for debugging errors?
+    assert: []
+  - vars:
+      question: >-
+        What is the minimum score required in GA5 to pass the course?
+    assert: []
+  - vars:
+      question: >-
+        Does the TDS course require GPU for local model testing?
+    assert: []
+  - vars:
+      question: >-
+        What should I do if my proxy returns a 403 Forbidden error?
+    assert: []
+  - vars:
+      question: >-
+        Is it okay to use third-party APIs in my evaluation module?
+    assert: []
+  - vars:
+      question: >-
+        Will the TDS end-term be open book or closed book?
+    assert: []
+  - vars:
+      question: >-
+        Do we need to include citations for all sources used in our GA submission?
+    assert: []
+  - vars:
+      question: >-
+        How can I test my local setup to match the evaluation environment?
+    assert: []
+  - vars:
+      question: >-
+        Is it okay to hard-code answers for specific inputs if I explain why?
+    assert: []
+  - vars:
+      question: >-
+        Will the evaluation script run with internet access or in a sandboxed environment?
+    assert: []
+
+writeLatestResults: true
+commandLineOptions:
+  cache: false

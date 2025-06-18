@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS Virtual TA - Knowledge Base Q&A</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-robot"></i>
+                    TDS Virtual TA
+                </h1>
+                <p class="subtitle">Ask questions about our knowledge base</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="welcome-message">
+                        <div class="welcome-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Welcome to TDS Virtual TA!</h3>
+                        <p>I'm here to help you find answers from our knowledge base. Ask me anything about the topics
+                            we've covered.</p>
+                        <div class="example-questions">
+                            <p><strong>Try asking:</strong></p>
+                            <ul>
+                                <li>"What are the best practices for data visualization?"</li>
+                                <li>"How do I implement machine learning models?"</li>
+                                <li>"What's the difference between supervised and unsupervised learning?"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <form id="questionForm" class="question-form">
+                        <div class="input-group">
+                            <textarea id="questionInput" placeholder="Ask your question here..." rows="1"
+                                required></textarea>
+                            <button type="submit" id="submitBtn" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Powered by TDS Knowledge Base</p>
+        </footer>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Searching knowledge base...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
